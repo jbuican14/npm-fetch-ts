@@ -9,6 +9,8 @@ const RepositoriesList: React.FC = () => {
     (state) => state.repositories
   );
 
+  const dataR = useTypedSelector((state) => state);
+  console.log('dataR::', dataR);
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -22,8 +24,8 @@ const RepositoriesList: React.FC = () => {
         <button>Search</button>
       </form>
       {error && <h3>{error}</h3>}
-      {loading && <h3>{loading}</h3>}
-      {!error && !loading && data}
+      {loading && <h3>Loading ...</h3>}
+      {!error && !loading && data.map((name) => <div key={name}>{name}</div>)}
     </div>
   );
 };
